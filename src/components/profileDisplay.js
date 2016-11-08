@@ -20,6 +20,7 @@ class ProfileDisplay extends Component {
   render(){
     return (
       <ScrollView>
+        <View style={styles.smallPadding}></View>
         <View style={styles.cardView}>
         <View>
             <Text style={styles.headerText}> 
