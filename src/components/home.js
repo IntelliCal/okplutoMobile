@@ -117,29 +117,29 @@ class Home extends Component {
             <Image style={{height:200, width: 500}} source={cover}/>
 
           </View>
-          <View style={{alignItems:'center'}}>
+          <View style={{alignItems:'center', paddingTop: 20}}>
             <ThemeProvider uiTheme={uiTheme}>
-              <Button accent raised text="Check out Events!" onPress={ () => this._navigate('Events') }/>
+              <Button primary raised text="Check out Events!" onPress={ () => this._navigate('Events') }/>
             </ThemeProvider>
             <Text>Get to know fellow dog owners in your area</Text>
           </View>
 
           <View style={{alignItems:'center', paddingTop: 20}}>
             <ThemeProvider uiTheme={uiTheme}>
-              <Button accent raised text="Check out your Profile!" onPress={ () => this._navigate('Profile') }/>
+              <Button primary raised text="Check out your Profile!" onPress={ () => this._navigate('Profile') }/>
             </ThemeProvider>
           <Text>Get to know fellow dog owners in your area</Text>
           </View>
-          <View style={{alignItems:'center'}}>
+          <View style={{alignItems:'center', paddingTop: 20}}>
             <ThemeProvider uiTheme={uiTheme}>
-              <Button accent raised text="Check out Users!" onPress={ () => this._navigate('UsersPage') }/>
+              <Button primary raised text="Check out Users!" onPress={ () => this._navigate('UsersPage') }/>
             </ThemeProvider>
             <Text>Get to know fellow dog owners in your area</Text>
           </View>
 
           <View style={{alignItems:'center', paddingTop: 20}}>
             <ThemeProvider uiTheme={uiTheme}>
-              <Button accent raised text="Create Profile" onPress={ () => this._navigate('ProfileCreation') }/>
+              <Button primary raised text="Create Profile" onPress={ () => this._navigate('ProfileCreation') }/>
             </ThemeProvider>
           <Text>Create a profile</Text>
           </View>

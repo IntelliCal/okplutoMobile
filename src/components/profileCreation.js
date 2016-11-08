@@ -6,7 +6,8 @@
 
 
 import React from 'react';
-import {View, ScrollView, Text, Image, Linking} from 'react-native';
+import {View, ScrollView, Text, Image, Linking, TextInput} from 'react-native';
+import Footer from './footer.js'
 // import {
 //   Step,
 //   Stepper,
@@ -82,6 +83,12 @@ class ProfileCreation extends React.Component {
     this.handlePrev = this.handlePrev.bind(this);
   }
 
+
+  _navigate(path) {
+    this.props.navigator.push({
+      name: path,
+    })
+  }
 // Waits until new user info is saved to DataBase, then pulls
 // available info to pre-populate sign up form
 // Currently only first and last name are available
@@ -262,29 +269,40 @@ class ProfileCreation extends React.Component {
     // const contentStyle = {margin: '0 16px'};
 
     return (
-      <View>
+      <View style={{flex:1}}>
+      <ScrollView style={{flexDirection:'column'}}>
         <View>
-            <View>
-              <View>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-        <Text>this is a test view of profile creation</Text>
-              </View>
-              <View>
-
-              </View>
-            </View>
+          <Text>First Name: </Text>
+          <TextInput
+            placeholder="First Name"
+            style={{height:40, borderColor:'black', borderWidth:1}}
+            value = {this.state.firstname}
+            onChange = {this.handleChange.bind(this, 'firstname')}
+            editable={true}
+          />
         </View>
+        <View>
+          <Text>Last Name: </Text>
+          <TextInput
+            placeholder="Last Name"
+            style={{height:40, borderColor:'black', borderWidth:1}}
+            value = {this.state.lastname}
+            onChange = {this.handleChange.bind(this, 'lastname')}
+            editable={true}
+          />
+        </View>
+        <View>
+          <Text>Location Name: </Text>
+          <TextInput
+            placeholder="Location"
+            style={{height:40, borderColor:'black', borderWidth:1}}
+            value = {this.state.loc}
+            onChange = {this.handleChange.bind(this, 'loc')}
+            editable={true}
+          />
+        </View>
+      </ScrollView>
+      <Footer navigate={this._navigate.bind(this)}/>
       </View>
     );
   }
