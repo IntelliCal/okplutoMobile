@@ -130,9 +130,13 @@ class Profile extends Component {
               <ProfileDisplay profile={this.props.profile} />
             </View>
 
-            <View style={styles.padding}>
-            </View>
+
+         
+
           <View style={styles.smallPadding}>
+         </View> 
+         <View style={styles.cardView}>
+         <View>
           <Text style={styles.headerText}>Events:</Text>
             </View>
 
@@ -160,9 +164,10 @@ class Profile extends Component {
               <Text style={styles.centerText}>Past Events</Text>
                 <View style={styles.otherText}>
                 <EventList type="profile" events={this.state.pastEvents} noEvents={this.state.noPastEvents} userInfo={this.props.userInfo}/>
+                <Text></Text>
                 </View>
             </View>
-
+            </View>
           </View>
         </ScrollView>
         <Footer navigate={this._navigate.bind(this)}/>
@@ -194,7 +199,12 @@ const styles = {
     paddingBottom:30
   },
   smallPadding:{
-    paddingBottom:10
+    paddingBottom:15
+  },
+  cardView:{
+    borderWidth:2,
+    borderColor:'darkblue',
+    borderRadius:15
   }
 }
 // Make sure auth0 Service is passed in
