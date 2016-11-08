@@ -23,24 +23,25 @@ class ProfileDisplay extends Component {
         <View style={styles.smallPadding}></View>
         <View style={styles.cardView}>
         <View>
-            <Text style={styles.headerText}> 
-              Your Info 
+            <Text style={styles.headerText}>
+              Your Info
             </Text>
-          <Text style={styles.centerText}>Name:{'  '+this.props.profile.name}</Text>
+          <Text style={styles.centerText}>Name:{'  '+this.props.profile.name || 'Erica Fanelle'}</Text>
         </View>
 
         <View>
           <View style={styles.image}>
-          <Image 
+          <Image
           style={{width:150,height:150, borderRadius:75}}
-          source={{uri:this.props.profile.picture}} />
+          source={{uri:this.props.profile.picture || "https://lh4.googleusercontent.com/-3K1RY-pUqQU/AAAAAAAAAAI/AAAAAAAACfc/WFRFZE8FdKY/photo.jpg\
+https://lh4.googleusercontent.com/-3K1RY-pUqQU/AAAAAAAAAAI/AAAAAAAACfc/WFRFZE8FdKY/photo.jpg"} } />
           <Text> Profile Picture </Text>
           </View>
 
           <View>
-          <Text style={styles.otherText}>Location: {this.props.profile.loc || 'Albuquerque, NM'}</Text>
+          <Text style={styles.otherText}>Location: {this.props.profile.loc || 'Cherry Hill, NJ'}</Text>
           <Text></Text>
-          </View> 
+          </View>
           </View>
           <View style={styles.padding}>
           </View>
@@ -50,16 +51,16 @@ class ProfileDisplay extends Component {
           </View>
           <View style={styles.cardView}>
           <View>
-            <Text style={styles.headerText}> 
+            <Text style={styles.headerText}>
               Your Pup's Info
             </Text>
-            <Text style={styles.centerText}>Name: {this.props.profile.dogName || 'Gomi Dorin'}</Text>
+            <Text style={styles.centerText}>Name: {this.props.profile.dogName || 'Tito Fanelle'}</Text>
           </View>
 
           <View style={styles.image}>
-            <Image 
-              style={{width:150,height:150, borderRadius:75}} 
-              source={{uri: 'https://i.ytimg.com/vi/KY4IzMcjX3Y/maxresdefault.jpg'}} 
+            <Image
+              style={{width:150,height:150, borderRadius:75}}
+              source={{uri: 'https://i.ytimg.com/vi/KY4IzMcjX3Y/maxresdefault.jpg'}}
               />
           </View>
 
@@ -71,7 +72,7 @@ class ProfileDisplay extends Component {
         </View>
       </ScrollView>
     )
-  }   
+  }
 }
 
 const styles = {

@@ -137,13 +137,6 @@ class Home extends Component {
             <Text>Get to know fellow dog owners in your area</Text>
           </View>
 
-          <View style={{alignItems:'center', paddingTop: 20}}>
-            <ThemeProvider uiTheme={uiTheme}>
-              <Button primary raised text="Create Profile" onPress={ () => this._navigate('ProfileCreation') }/>
-            </ThemeProvider>
-          <Text>Create a profile</Text>
-          </View>
-
 
           <View>
             <View style={{flexDirection:'row', justifyContent:'space-around'}}>
@@ -261,6 +254,12 @@ const styles= {
   }
 }
 
+// {          // <View style={{alignItems:'center', paddingTop: 20}}>
+          //   <ThemeProvider uiTheme={uiTheme}>
+          //     <Button primary raised text="Create Profile" onPress={ () => this._navigate('ProfileCreation') }/>
+          //   </ThemeProvider>
+          // <Text>Create a profile</Text>
+          // </View>}
 
 
 module.exports = Home;
