@@ -156,5 +156,6 @@ const styles={
 //     marginBottom: 5,
 //   },
 // });
+console.disableYellowBox = true;
 
 AppRegistry.registerComponent('OKPlutoMobile', () => OKPlutoMobile);
