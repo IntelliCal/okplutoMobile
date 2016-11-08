@@ -35,7 +35,7 @@ class UsersPage extends Component {
   }
 
 
-  componentWillMount() {
+  componentDidMount() {
     var self = this;
     getUsers()
     .then((users) => {
@@ -50,11 +50,11 @@ class UsersPage extends Component {
       });
 
       // Set searchable options
-      // var searchArray = [];
-      // users.users.forEach(user => {
-      //   searchArray.push(user.firstname + ' ' + user.lastname, user.dogname)
-      // })
-      // self.setState({searchSource: searchArray});
+      var searchArray = [];
+      users.users.forEach(user => {
+        searchArray.push(user.firstname + ' ' + user.lastname, user.dogname)
+      })
+      self.setState({searchSource: searchArray});
 
       //tracker for matching distance to user
       // users.users.forEach(user => {
@@ -76,14 +76,14 @@ class UsersPage extends Component {
   }
 
   handleChange(text, userNames) {
-    // // Change displayedUsers array based on the search input
-    // var displayedUsers = this.state.users.filter(user => {
-    //   if (user.dogname === undefined) {user.dogname = ''}
-    //   var re = new RegExp(text, "gi")
-    //   var name = user.firstname + ' ' + user.lastname;
-    //   return name.match(re) || user.dogname.match(re)
-    // })
-    // this.setState({displayedUsers: displayedUsers});
+    // Change displayedUsers array based on the search input
+    var displayedUsers = this.state.users.filter(user => {
+      if (user.dogname === undefined) {user.dogname = ''}
+      var re = new RegExp(text, "gi")
+      var name = user.firstname + ' ' + user.lastname;
+      return name.match(re) || user.dogname.match(re)
+    })
+    this.setState({displayedUsers: displayedUsers});
   }
 
   render () {
@@ -94,7 +94,7 @@ class UsersPage extends Component {
         <ScrollView>
           <AutoComplete
                 defaultValue={"Search Users"}
-                data={this.state.searchSource}
+                data={[]}
                 onChangeText={this.handleChange}
                 onRender={this.handleChange}
              />
