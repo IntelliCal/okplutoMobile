@@ -8,6 +8,8 @@ import { COLOR, ThemeProvider, Toolbar, Button } from 'react-native-material-ui'
 import Footer from './footer';
 import uiTheme from '../theme/theme.js';
 
+import ProfileCreation from './profileCreation';
+
 const House = require('../assets/house.png');
 const Connect = require('../assets/connect.png');
 const MeetUp = require('../assets/meetUp.png');
@@ -98,6 +100,12 @@ class Home extends Component {
   }
 
   render () {
+    console.log(this.props.initUser)
+    if (this.props.initUser) {
+      return (
+        <ProfileCreation user={this.props.user} profile={this.props.profile}/>
+        );
+    } else {
     return (
       <View>
         <ScrollView>
@@ -127,6 +135,13 @@ class Home extends Component {
               <Button accent raised text="Check out Users!" onPress={ () => this._navigate('UsersPage') }/>
             </ThemeProvider>
             <Text>Get to know fellow dog owners in your area</Text>
+          </View>
+
+          <View style={{alignItems:'center', paddingTop: 20}}>
+            <ThemeProvider uiTheme={uiTheme}>
+              <Button accent raised text="Create Profile" onPress={ () => this._navigate('ProfileCreation') }/>
+            </ThemeProvider>
+          <Text>Create a profile</Text>
           </View>
 
 
@@ -187,7 +202,7 @@ class Home extends Component {
         </ScrollView>
         <Footer navigate={this._navigate.bind(this)}/>
       </View>
-    );
+    );}
   };
 };
   //line 123 <Footer />

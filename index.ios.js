@@ -27,6 +27,7 @@ import Auth0Lock from 'react-native-lock';
 import authobj from './config/auth0';
 import Events from './src/components/events';
 import React, { Component } from 'react';
+import { findUser, updateUser } from './src/services/userServices';
 import {
   AppRegistry,
   StyleSheet,
@@ -41,26 +42,71 @@ var lock = new Auth0Lock(authobj);
 //Lucas
 const profileObj = {};
 const tokenObj = {};
-lock.show({}, (err, profile, token) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  // Authentication worked!
-  profileObj = profile;
-  tokenObj = token;
-  console.log(profileObj);
-  console.log(tokenObj);
-});
+
+var initUser = false;
+var theUser = {};
+
 
 // import Router from 'react-native-routing';
 
 export default class OKPlutoMobile extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      routeA: {name: 'Home'}
+    }
+  }
+
+  componentWillMount() {
+    var reactClass = this;
+    lock.show({}, (err, profile, token) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    // Authentication worked!
+    profileObj = profile;
+    tokenObj = token;
+    console.log('profileObj: ',profileObj);
+    console.log('tokenObj: ',tokenObj);
+
+    fetch('https://tranquil-tundra-43211.herokuapp.com/signin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: tokenObj.idToken
+      })
+    })
+
+    console.log('running find user');
+      findUser(profileObj.userId)
+      .then((user) => {
+        if (user[0].dogname === undefined) {
+          console.log("new user");
+          initUser = true;
+          theUser = user;
+          reactClass.forceUpdate();
+        } else {
+          console.log('not a new user');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+
+    });
+  }
+
+
   renderScene(route, navigator) {
     const { name, passProps } = route;
     if (name === 'Home') {
-      return <Home navigator={navigator} />
+      return <Home navigator={navigator} initUser={initUser} user={theUser} profile={profileObj}/>
     } else if (name === 'Profile') {
       return <Profile navigator={navigator} profile={profileObj}/>
     } else if (name === 'Events') {
@@ -68,7 +114,7 @@ export default class OKPlutoMobile extends Component {
     } else if (name === 'UsersPage') {
       return <UsersPage navigator={navigator} profile={profileObj} token={tokenObj} />
     } else if (name === 'ProfileCreation') {
-      return <ProfileCreation navigator={navigator} />
+      return <ProfileCreation navigator={navigator} {...passProps} profile={profileObj}/>
     }
   }
 
@@ -76,7 +122,7 @@ export default class OKPlutoMobile extends Component {
     return (
       <Navigator
       style={styles.viewStyle}
-      initialRoute={{name:'Home'}}
+      initialRoute={{name: 'Home'}}
       renderScene={this.renderScene}
       configureScene={(route, routeStack) =>
       Navigator.SceneConfigs.VerticalUpSwipeJump}
