@@ -109,12 +109,12 @@ const saveUser = function(idToken) {
 
 // Get current user's info from db
 const findUser = function(dbId) {
-  return fetch("https://tranquil-tundra-43211.herokuapp.com/api/users?dbId=${dbId})")
-  // ^^ does there need to be something with backticks here?
+  return fetch(`https://tranquil-tundra-43211.herokuapp.com/api/users?dbId=${dbId}`)
+    // .then( response => response)
     .then( response => response.json())
     .catch(error => {
-        console.log(error);
-      });
+      console.log(error);
+    });
   // dbId = dbId || localStorage.getItem('mongoUserId');
   // return new Promise((resolve, reject) => {
   //   $.ajax({

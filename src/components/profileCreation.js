@@ -18,7 +18,7 @@ import {View, ScrollView, Text, Image, Linking} from 'react-native';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import TextField from 'material-ui/TextField';
-// import { findUser, updateUser } from '../services/userServices.js';
+import { findUser, updateUser } from '../services/userServices';
 // import { hashHistory } from 'react-router';
 
 // const rValidImage = /^((https?|ftp):)?\/\/.*(jpeg|jpg|png|gif|bmp)$/i
@@ -86,21 +86,23 @@ class ProfileCreation extends React.Component {
 // available info to pre-populate sign up form
 // Currently only first and last name are available
 // On every sign up
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     // User services function, searches by user ID
-  //     findUser()
-  //     .then((user) => {
-  //       this.setState({"firstname": user.firstname});
-  //       this.setState({"lastname": user.lastname})
-  //       this.setState({"loc": user.loc || ""});
-  //       this.setState({"dogname": user.dogname || ""});
-  //       this.setState({"dogBreed": user.dogBreed || ""});
-  //       this.setState({"dogAge": user.dogAge || ""});
-  //       this.setState({"picLink": user.picLink || ""});
-  //     })
-  //   }, 1000)
-  // }
+  componentDidMount() {
+    setTimeout(() => {
+      // User services function, searches by user ID
+      console.log('finduser: ',findUser(this.props.profile.userId));
+      findUser(this.props.profile.userId)
+      .then(user => console.log(user))
+      .then((user) => {
+        this.setState({"firstname": user.firstname});
+        this.setState({"lastname": user.lastname})
+        this.setState({"loc": user.loc || ""});
+        this.setState({"dogname": user.dogname || ""});
+        this.setState({"dogBreed": user.dogBreed || ""});
+        this.setState({"dogAge": user.dogAge || ""});
+        this.setState({"picLink": user.picLink || ""});
+      })
+    }, 1000)
+  }
 
 // Updates State to match user input
   handleChange(prop, event) {
@@ -111,26 +113,26 @@ class ProfileCreation extends React.Component {
 
 // Does error checking on form iput, and either displays error message,
 // or updates user in DB and redirects to users page after step 1 is complete
-  // handleSubmit() {
-  //   var errors = {};
-  //   if (this.state.stepIndex === 1) {
-  //     errors = validate(dogProfile, 1);
-  //   } else {
-  //     errors = validate(ownerProfile, 0);
-  //   }
-  //   if (Object.keys(errors).length === 0) {
-  //     this.handleNext();
-  //     if (this.state.stepIndex === 1) {
+  handleSubmit() {
+    var errors = {};
+    if (this.state.stepIndex === 1) {
+      errors = validate(dogProfile, 1);
+    } else {
+      errors = validate(ownerProfile, 0);
+    }
+    if (Object.keys(errors).length === 0) {
+      this.handleNext();
+      if (this.state.stepIndex === 1) {
 
-  //       updateUser(this.state)
-  //         .then(function (user) {
-  //           hashHistory.push('/users')
-  //       });
-  //     }
-  //   }
-  //   this.setState({"errorText": errors});
-  //   console.log(this.state);
-  // }
+        updateUser(this.state)
+          .then(function (user) {
+            hashHistory.push('/users')
+        });
+      }
+    }
+    this.setState({"errorText": errors});
+    console.log(this.state);
+  }
 
 // Steps to next part of sign up form
   handleNext() {
@@ -253,8 +255,9 @@ class ProfileCreation extends React.Component {
 
           // )}
       // </MuiThemeProvider>
-        
+
   render() {
+    console.log('the profile creation page');
     const {finished, stepIndex} = this.state;
     // const contentStyle = {margin: '0 16px'};
 
@@ -263,10 +266,22 @@ class ProfileCreation extends React.Component {
         <View>
             <View>
               <View>
-        
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
+        <Text>this is a test view of profile creation</Text>
               </View>
               <View>
-              
+
               </View>
             </View>
         </View>
