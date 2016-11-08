@@ -51,7 +51,7 @@ class Footer extends Component {
             onLeftElementPress={() => this.props.navigate('Home')}
             centerElement="Navbar"
             rightElement={{
-              actions: ['edit', 'event', 'verified-user']
+              actions: ['verified-user']
             }}
             onRightElementPress={() =>
               (
