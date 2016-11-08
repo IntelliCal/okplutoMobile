@@ -20,6 +20,8 @@ class ProfileDisplay extends Component {
   render(){
     return (
       <ScrollView>
+        <View style={styles.smallPadding}></View>
+        <View style={styles.cardView}>
         <View>
             <Text style={styles.headerText}> 
               Your Info 
@@ -37,11 +39,16 @@ class ProfileDisplay extends Component {
 
           <View>
           <Text style={styles.otherText}>Location: {this.props.profile.loc || 'Albuquerque, NM'}</Text>
+          <Text></Text>
           </View> 
-          
+          </View>
           <View style={styles.padding}>
           </View>
+          </View>
 
+          <View style={styles.smallPadding}>
+          </View>
+          <View style={styles.cardView}>
           <View>
             <Text style={styles.headerText}> 
               Your Pup's Info
@@ -59,6 +66,7 @@ class ProfileDisplay extends Component {
           <View>
             <Text style={styles.smallPadding}>Breed: {this.props.profile.dogBreed || 'Golden Retriever'}</Text>
             <Text style={styles.otherText}>Age: {this.props.profile.dogAge || '7'}</Text>
+            <Text></Text>
           </View>
         </View>
       </ScrollView>
@@ -90,6 +98,12 @@ const styles = {
   smallPadding:{
     paddingBottom:15,
     paddingLeft:100
+  },
+  cardView:{
+    borderWidth:2,
+    borderColor:'darkblue',
+    paddingBottom:15,
+    borderRadius:25
   }
 }
 
