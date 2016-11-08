@@ -19,7 +19,6 @@ class UserDisplay extends Component {
       <View style={styles.users}>
       <View>
         <Text>Pup Name:{this.props.user.dogname} </Text>
-        <Text>{'From: ' + this.props.user.loc} </Text>
         <Text>Owner: {this.props.user.firstname}</Text>
         <Text>Age: {this.props.user.dogAge} </Text>
         <Text>Breed: {this.props.user.dogBreed} </Text>

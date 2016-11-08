@@ -93,7 +93,7 @@ class UsersPage extends Component {
         <Banner display={'Local Users'} />
         <ScrollView>
           <AutoComplete
-                defaultValue={"Search Users"}
+                placeholder={"Search Users"}
                 data={[]}
                 onChangeText={this.handleChange}
                 onRender={this.handleChange}
