@@ -129,7 +129,7 @@ render () {
           <Button primary raised text="Attend" onPress={() => Alert.alert(
             alertMessage,
             [
-              {text: 'Heck Yeah!', onPress: () => console.log('OK Pressed!')},
+              {text: "Heck Yeah!", onPress: () => console.log('OK Pressed!')},
               {text: "Don't Sign Me Up!", onPress: () => console.log('Cancel Pressed!')}
             ]
           )}/>
@@ -145,7 +145,7 @@ render () {
       <Banner display={'Local Events'} />
         <View>
           <AutoComplete
-          defaultValue="Search Events"
+          placeholder="Search Events"
           data={[]}
           onChangeText={this.handleChange}
           onRender={this.handleChange}
